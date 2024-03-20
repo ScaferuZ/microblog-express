@@ -1,9 +1,8 @@
 {
   "name": "microblog",
-  "module": "index.ts",
-  "type": "module",
+  "main": "src/index.ts",
   "scripts": {
-    "start": "nodemon index.ts",
+    "start": "bun nodemon ./src/index.ts",
     "dev": "ts-node index.ts"
   },
   "devDependencies": {
