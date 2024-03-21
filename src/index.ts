@@ -59,6 +59,24 @@ app.delete("/post/:id", async (req: Request, res: Response) => {
   res.json(post);
 });
 
+// /user routes
+// post /user
+app.post("/user", async (req: Request, res: Response) => {
+  const result = await prisma.user.create({
+    data: { ...req.body },
+  });
+  res.json(result);
+});
+
+// get username
+app.get("/:username", async (req: Request, res: Response) => {
+  const { username } = req.params;
+  const user = await prisma.user.findUnique({
+    where: { username: username },
+  });
+  res.json(user);
+});
+
 // handle 404 errornodemon index.ts
 app.use((req: Request, res: Response, next: Function) => {
   next(createError(404));
