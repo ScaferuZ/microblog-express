@@ -18,15 +18,7 @@ app.get("/feed", async (req: Request, res: Response) => {
 
 // routes
 app.use("/post", require("./post/post.routes"));
-
-// /user routes
-// post /user
-app.post("/user", async (req: Request, res: Response) => {
-  const result = await prisma.user.create({
-    data: { ...req.body },
-  });
-  res.json(result);
-});
+app.use("/user", require("./user/user.routes"));
 
 // get username
 app.get("/:username", async (req: Request, res: Response) => {
